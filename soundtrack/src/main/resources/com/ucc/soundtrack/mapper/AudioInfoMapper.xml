@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ucc.soundtrack.mapper.AudioInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ucc.soundtrack.pojo.AudioInfo">
+    <id column="count" jdbcType="INTEGER" property="count" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="longtitude" jdbcType="DOUBLE" property="longtitude" />
+    <result column="noiseRate" jdbcType="INTEGER" property="noiserate" />
+    <result column="currentVolume" jdbcType="DOUBLE" property="currentvolume" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from audio_info
+    where `count` = #{count,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ucc.soundtrack.pojo.AudioInfo">
+    insert into audio_info (`count`, latitude, longtitude,
+      noiseRate, currentVolume)
+    values (#{count,jdbcType=INTEGER}, #{latitude,jdbcType=DOUBLE}, #{longtitude,jdbcType=DOUBLE}, 
+      #{noiserate,jdbcType=INTEGER}, #{currentvolume,jdbcType=DOUBLE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ucc.soundtrack.pojo.AudioInfo">
+    update audio_info
+    set latitude = #{latitude,jdbcType=DOUBLE},
+      longtitude = #{longtitude,jdbcType=DOUBLE},
+      noiseRate = #{noiserate,jdbcType=INTEGER},
+      currentVolume = #{currentvolume,jdbcType=DOUBLE}
+    where `count` = #{count,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select `count`, latitude, longtitude, noiseRate, currentVolume
+    from audio_info
+    where `count` = #{count,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select `count`, latitude, longtitude, noiseRate, currentVolume
+    from audio_info
+  </select>
+</mapper>

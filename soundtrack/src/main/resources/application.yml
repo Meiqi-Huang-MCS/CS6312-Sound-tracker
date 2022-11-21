@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/audio_track
+    username: root
+    password: 123
+
+mybatis:
+  type-aliases-package: com.ucc.soundtrack.pojo
+  mapper-locations: classpath://com/ucc/soundtrack/mapper/*.xml
+
+  ##html存放的具体路径，可进行自定义，示例：resources/templates
+  #spring.thymeleaf.prefix=classpath:/templates/
+  #spring.thymeleaf.encoding=UTF-8
+  #spring.thymeleaf.cache=false
+  #spring.thymeleaf.suffix=.html
+  #spring.thymeleaf.servlet.content-type=text/html
